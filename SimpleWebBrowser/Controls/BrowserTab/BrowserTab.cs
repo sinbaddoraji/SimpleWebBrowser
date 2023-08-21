@@ -42,11 +42,23 @@ namespace SimpleWebBrowser.Controls.BrowserTab
 
         private void NavigateToUrl(string url)
         {
-            if (webviewControl != null && Uri.TryCreate(url, UriKind.Absolute, out var uri))
+            if (webviewControl != null)
             {
-                webviewControl.Source = uri;
+                Uri uri;
+                if (Uri.TryCreate(url, UriKind.Absolute, out uri) && (uri.Scheme == "http" || uri.Scheme == "https"))
+                {
+                    webviewControl.Source = uri;
+                }
+                else
+                {
+                    // Construct a Google search URL for the given text
+                    string searchQuery = Uri.EscapeDataString(url);  // Make sure the string is URL-safe
+                    Uri googleUri = new Uri($"https://www.google.com/search?q={searchQuery}");
+                    webviewControl.Source = googleUri;
+                }
             }
         }
+
 
         private void backwardsButton_Click(object sender, EventArgs e)
         {
