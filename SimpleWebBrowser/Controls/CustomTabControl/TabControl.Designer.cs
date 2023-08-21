@@ -37,6 +37,7 @@
             // flowLayoutPanel1
             // 
             flowLayoutPanel1.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            flowLayoutPanel1.WrapContents = false;
             flowLayoutPanel1.BackColor = Color.Transparent;
             flowLayoutPanel1.Controls.Add(button1);
             flowLayoutPanel1.Location = new Point(0, 0);

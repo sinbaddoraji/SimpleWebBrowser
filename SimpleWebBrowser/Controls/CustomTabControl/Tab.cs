@@ -1,20 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-
-namespace SimpleWebBrowser.Controls.CustomTabControl
+﻿namespace SimpleWebBrowser.Controls.CustomTabControl
 {
     public partial class Tab : UserControl
     {
         public bool Selected
         {
-            get { return _selected; }
+            get => _selected;
             set
             {
                 _selected = value;
@@ -32,24 +22,24 @@ namespace SimpleWebBrowser.Controls.CustomTabControl
 
         public string Title
         {
-            get { return label1.Text; }
+            get => titleLabel.Text;
             set
             {
                 if (value.Length > 15)
                 {
-                    label1.Text = value.Substring(0, 15) + "..."; // Takes the first 27 characters and appends "..."
+                    titleLabel.Text = value.Substring(0, 15) + @"..."; // Takes the first 27 characters and appends "..."
                 }
                 else
                 {
-                    label1.Text = value;
+                    titleLabel.Text = value;
                 }
 
                 // Adjust the width of the Tab control when the title changes
-                Label1_TextChanged(label1, EventArgs.Empty);
+                Label1_TextChanged(titleLabel, EventArgs.Empty);
             }
         }
 
-        private Control _content;
+        private Control _content = null!;
         public Control Content
         {
             get => _content;
@@ -58,9 +48,9 @@ namespace SimpleWebBrowser.Controls.CustomTabControl
                 _content = value;
                 _content.Dock = DockStyle.Fill;
 
-                _content.TextChanged += (sender, args) =>
+                _content.TextChanged += (sender, _) =>
                 {
-                    Title = ((Control)sender).Text;
+                    Title = ((Control)sender)?.Text;
                 };
             }
         }
@@ -68,8 +58,6 @@ namespace SimpleWebBrowser.Controls.CustomTabControl
         private bool _selected;
 
         public event EventHandler TabSelected;
-
-
         public Tab()
         {
             InitializeComponent();
@@ -78,21 +66,13 @@ namespace SimpleWebBrowser.Controls.CustomTabControl
             {
                 childControl.Click += (sender, e) => Tab_Click(this, e); // Propagate child control clicks to the Tab
             }
-
-            TabSelected += OnTabSelected;
-
-            
         }
 
-        private void OnTabSelected(object? sender, EventArgs e)
-        {
-            string url = "https://www.google.com/";
-        }
 
         private void Label1_TextChanged(object sender, EventArgs e)
         {
             // Calculate the required width for label1's text
-            int textWidth = TextRenderer.MeasureText(label1.Text, label1.Font).Width;
+            int textWidth = TextRenderer.MeasureText(titleLabel.Text, titleLabel.Font).Width;
 
             // Width of the button
             int buttonWidth = tabButton1.Width;
@@ -138,18 +118,18 @@ namespace SimpleWebBrowser.Controls.CustomTabControl
         }
 
 
-        private void tabButton1_Click(object sender, EventArgs e)
+        private void TabButton1_Click(object sender, EventArgs e)
         {
             this.Parent.Controls.Remove(this);
         }
 
 
-        private void tabButton1_MouseHover(object sender, EventArgs e)
+        private void TabButton1_MouseHover(object sender, EventArgs e)
         {
-            tabButton1.Text = "X";
+            tabButton1.Text = @"X";
         }
 
-        private void tabButton1_MouseLeave(object sender, EventArgs e)
+        private void TabButton1_MouseLeave(object sender, EventArgs e)
         {
             tabButton1.Text = "";
         }

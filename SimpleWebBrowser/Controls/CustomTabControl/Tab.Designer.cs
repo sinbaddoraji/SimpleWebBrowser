@@ -28,19 +28,19 @@
         /// </summary>
         private void InitializeComponent()
         {
-            label1 = new Label();
+            titleLabel = new Label();
             tabButton1 = new TabButton();
             SuspendLayout();
             // 
-            // label1
+            // titleLabel
             // 
-            label1.AutoSize = true;
-            label1.Location = new Point(3, 8);
-            label1.Name = "label1";
-            label1.Size = new Size(59, 25);
-            label1.TabIndex = 0;
-            label1.Text = "label1";
-            label1.TextChanged += Label1_TextChanged;
+            titleLabel.AutoSize = true;
+            titleLabel.Location = new Point(3, 8);
+            titleLabel.Name = "titleLabel";
+            titleLabel.Size = new Size(79, 25);
+            titleLabel.TabIndex = 0;
+            titleLabel.Text = "New Tab";
+            titleLabel.TextChanged += Label1_TextChanged;
             // 
             // tabButton1
             // 
@@ -56,10 +56,10 @@
             tabButton1.TabIndex = 0;
             tabButton1.Text = "X";
             tabButton1.UseVisualStyleBackColor = false;
-            tabButton1.Click += tabButton1_Click;
-            tabButton1.MouseEnter += tabButton1_MouseHover;
-            tabButton1.MouseLeave += tabButton1_MouseLeave;
-            tabButton1.MouseHover += tabButton1_MouseHover;
+            tabButton1.Click += TabButton1_Click;
+            tabButton1.MouseEnter += TabButton1_MouseHover;
+            tabButton1.MouseLeave += TabButton1_MouseLeave;
+            tabButton1.MouseHover += TabButton1_MouseHover;
             // 
             // Tab
             // 
@@ -67,7 +67,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             BorderStyle = BorderStyle.FixedSingle;
             Controls.Add(tabButton1);
-            Controls.Add(label1);
+            Controls.Add(titleLabel);
             Name = "Tab";
             Size = new Size(105, 43);
             ResumeLayout(false);
@@ -76,7 +76,7 @@
 
         #endregion
 
-        private Label label1;
+        private Label titleLabel;
         private TabButton tabButton1;
     }
 }

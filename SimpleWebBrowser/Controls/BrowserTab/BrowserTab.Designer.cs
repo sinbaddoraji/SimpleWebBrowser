@@ -95,7 +95,7 @@
             urlTextbox.Name = "urlTextbox";
             urlTextbox.Size = new Size(464, 39);
             urlTextbox.TabIndex = 3;
-            urlTextbox.KeyDown += urlTextbox_KeyDown;
+            urlTextbox.KeyDown += UrlTextbox_KeyDown;
             // 
             // searchButton
             // 
@@ -109,7 +109,7 @@
             searchButton.Size = new Size(47, 38);
             searchButton.TabIndex = 4;
             searchButton.UseVisualStyleBackColor = true;
-            searchButton.Click += searchButton_Click;
+            searchButton.Click += SearchButton_Click;
             // 
             // BrowserTab
             // 

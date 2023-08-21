@@ -2,20 +2,14 @@
 {
     public partial class BrowserTab : UserControl
     {
-      
-
-        private string _tabName;
+        private string _tabName = null!;
         public string TabName
         {
-            get
-            {
-                return _tabName;
-            }
+            get => _tabName;
             set
             {
                 _tabName = value;
                 Text = value;
-                OnTabNameChanged();
             }
         }
 
@@ -32,9 +26,10 @@
             webviewControl.CoreWebView2.DocumentTitleChanged += CoreWebView2_DocumentTitleChanged;
         }
 
-        private void CoreWebView2_DocumentTitleChanged(object sender, object e)
+        private void CoreWebView2_DocumentTitleChanged(object? sender, object e)
         {
             TabName = webviewControl.CoreWebView2.DocumentTitle;
+            urlTextbox.Text = webviewControl.Source.ToString();
         }
 
         private void NavigateToUrl(string url)
@@ -61,7 +56,7 @@
             }
         }
 
-        private void urlTextbox_KeyDown(object sender, KeyEventArgs e)
+        private void UrlTextbox_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
             {
@@ -69,16 +64,9 @@
             }
         }
 
-        private void searchButton_Click(object sender, EventArgs e)
+        private void SearchButton_Click(object sender, EventArgs e)
         {
             NavigateToUrl(urlTextbox.Text);
         }
-
-        private void OnTabNameChanged()
-        {
-            // You can implement logic here if you want to reflect the change of tab name elsewhere, 
-            // such as updating the tab header if you have a tab control, or triggering some other event.
-        }
-        
     }
 }
