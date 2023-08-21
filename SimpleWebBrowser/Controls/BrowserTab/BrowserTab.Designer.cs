@@ -34,6 +34,7 @@
             forwardsButton = new Button();
             urlTextbox = new TextBox();
             searchButton = new Button();
+            button1 = new Button();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)webviewControl).BeginInit();
             SuspendLayout();
@@ -45,7 +46,7 @@
             panel1.Controls.Add(webviewControl);
             panel1.Location = new Point(3, 53);
             panel1.Name = "panel1";
-            panel1.Size = new Size(663, 340);
+            panel1.Size = new Size(660, 340);
             panel1.TabIndex = 0;
             // 
             // webviewControl
@@ -56,7 +57,7 @@
             webviewControl.Dock = DockStyle.Fill;
             webviewControl.Location = new Point(0, 0);
             webviewControl.Name = "webviewControl";
-            webviewControl.Size = new Size(661, 338);
+            webviewControl.Size = new Size(658, 338);
             webviewControl.TabIndex = 0;
             webviewControl.ZoomFactor = 1D;
             // 
@@ -93,7 +94,7 @@
             urlTextbox.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             urlTextbox.Location = new Point(149, 8);
             urlTextbox.Name = "urlTextbox";
-            urlTextbox.Size = new Size(464, 39);
+            urlTextbox.Size = new Size(407, 39);
             urlTextbox.TabIndex = 3;
             urlTextbox.KeyDown += UrlTextbox_KeyDown;
             // 
@@ -104,18 +105,33 @@
             searchButton.BackgroundImageLayout = ImageLayout.Zoom;
             searchButton.FlatAppearance.BorderSize = 0;
             searchButton.FlatStyle = FlatStyle.Flat;
-            searchButton.Location = new Point(619, 9);
+            searchButton.Location = new Point(562, 10);
             searchButton.Name = "searchButton";
             searchButton.Size = new Size(47, 38);
             searchButton.TabIndex = 4;
             searchButton.UseVisualStyleBackColor = true;
             searchButton.Click += SearchButton_Click;
             // 
+            // button1
+            // 
+            button1.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            button1.BackgroundImage = Properties.Resources.icons8_download_48;
+            button1.BackgroundImageLayout = ImageLayout.Zoom;
+            button1.FlatAppearance.BorderSize = 0;
+            button1.FlatStyle = FlatStyle.Flat;
+            button1.Location = new Point(615, 10);
+            button1.Name = "button1";
+            button1.Size = new Size(47, 38);
+            button1.TabIndex = 5;
+            button1.UseVisualStyleBackColor = true;
+            button1.Click += button1_Click;
+            // 
             // BrowserTab
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
+            Controls.Add(button1);
             Controls.Add(searchButton);
             Controls.Add(urlTextbox);
             Controls.Add(forwardsButton);
@@ -137,5 +153,6 @@
         private TextBox urlTextbox;
         private Button searchButton;
         private Microsoft.Web.WebView2.WinForms.WebView2 webviewControl;
+        private Button button1;
     }
 }

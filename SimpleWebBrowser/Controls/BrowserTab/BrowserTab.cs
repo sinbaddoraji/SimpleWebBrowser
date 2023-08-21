@@ -1,4 +1,6 @@
-﻿namespace SimpleWebBrowser.Controls.BrowserTab
+﻿using Microsoft.Web.WebView2.Core;
+
+namespace SimpleWebBrowser.Controls.BrowserTab
 {
     public partial class BrowserTab : UserControl
     {
@@ -25,6 +27,12 @@
             webviewControl.Source = new Uri("https://www.google.com");
             webviewControl.CoreWebView2.DocumentTitleChanged += CoreWebView2_DocumentTitleChanged;
         }
+
+        private void webView21_DownloadStarting(object sender, CoreWebView2DownloadStartingEventArgs e)
+        {
+
+        }
+
 
         private void CoreWebView2_DocumentTitleChanged(object? sender, object e)
         {
@@ -67,6 +75,16 @@
         private void SearchButton_Click(object sender, EventArgs e)
         {
             NavigateToUrl(urlTextbox.Text);
+        }
+
+        private void BrowserTab_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            webviewControl.CoreWebView2.OpenDefaultDownloadDialog();
         }
     }
 }
